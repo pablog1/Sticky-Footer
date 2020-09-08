@@ -35,7 +35,10 @@ body {
     background-color: black;
 }
 
-.sticky-footer{
+.sticky-footer {
     color: white;
-    background-color: rgb(196, 184, 28);
+    background-color: #c4b81c;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
 }

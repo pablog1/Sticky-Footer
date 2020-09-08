@@ -41,5 +41,8 @@ body {
 .sticky-footer {
   color: white;
   background-color: #c4b81c;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
 }
 /*# sourceMappingURL=style.css.map */

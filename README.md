@@ -1,3 +1,2 @@
-# JS/JQuery Sticky Footer
+# JQuery Sticky Footer
 
-Height or class triggers

@@ -26,21 +26,31 @@ body {
 }
 
 .description {
-  margin-top: 15px;
+  margin: 15px 0;
+  padding: 15px;
+  background-color: #cecece;
 }
 
 .description p {
   font-weight: 700;
 }
 
-.footer {
+.footer, .sticky-footer {
   color: white;
   background-color: black;
+  text-align: center;
+  padding: 7px;
+  height: 80px;
+  font-weight: 600;
+  line-height: 4;
+}
+
+.footer p, .sticky-footer p {
+  margin-bottom: 0;
 }
 
 .sticky-footer {
-  color: white;
-  background-color: #c4b81c;
+  background-color: #c4791c;
   position: fixed;
   bottom: 0;
   z-index: 1;
@@ -50,6 +60,14 @@ body {
 .sticky-footer-offset-1,
 .sticky-footer-offset-2 {
   font-size: 20px;
-  background-color: burlywood;
+  background-color: #1cc4a5;
+  color: white;
+  padding: 6px;
+}
+
+.highlight {
+  color: blue;
+  font-size: 30px;
+  font-weight: 600;
 }
 /*# sourceMappingURL=style.css.map */

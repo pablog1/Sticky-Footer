@@ -22,6 +22,8 @@ $(function () {
     let mainStickyFooterClass = '.sticky-footer';
     let stickyOffsetClass1 = '.sticky-footer-offset-1';
     let stickyOffsetClass2 = '.sticky-footer-offset-2';
+    let offSet1 = 100; //Change the position from top or bottom
+    let offSet2 = 100; //The same, for the second class
     let bottomHeight = true; // set to false if you need the top height
     let classHeightMode = true // set to false if you chosee fix sizes
     let twoOffsetsMode = true // set to false if you want only one
@@ -78,10 +80,9 @@ $(function () {
 
     function setFooterOffsets(){
         if (classHeightMode) {
-            footerOffset = getHeight(stickyOffsetClass1, bottomHeight);
-    
+            footerOffset = getHeight(stickyOffsetClass1, bottomHeight) + offSet1;
             if(twoOffsetsMode){
-                footerOffset2 = getHeight(stickyOffsetClass2, bottomHeight);
+                footerOffset2 = getHeight(stickyOffsetClass2, bottomHeight) + offSet2;
             } else {
                 footerOffset2 = $(document).height();
             }

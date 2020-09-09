@@ -1,4 +1,16 @@
 'use strict';
+/*
+Sticky footer Jquery Plugin
+Main features;
+- One or two offsets sizes (usefull to hide the sticky footer to show the normal footer or a CTA)
+- only mobile, or also for desktop
+- get Visible whit class is on top or on bottom
+
+
+USAGE:
+- Try to change the config values, it's is really simple
+- see our css /scss file as example 
+*/
 
 $(function () {
     // !Sticky Footer
@@ -7,51 +19,46 @@ $(function () {
     //CONFIG
     //footerOffset = 800;
     //footerOffset2 = 2700;
+    let mainStickyFooterClass = '.sticky-footer';
     let stickyOffsetClass1 = '.sticky-footer-offset-1';
     let stickyOffsetClass2 = '.sticky-footer-offset-2';
     let bottomHeight = true; // set to false if you need the top height
     let classHeightMode = true // set to false if you chosee fix sizes
-    let maxWidth = 480;
+    let twoOffsetsMode = true // set to false if you want only one
+    let maxWidth = 480; //set to 0 if you want to have the sticky footer in all sizes
 
     //END CONFIG//
 
 
     let footerStatus = false;
-    if (classHeightMode == true) {
-        footerOffset = getHeight(stickyOffsetClass1, bottomHeight);
-        footerOffset2 = getHeight(stickyOffsetClass2, bottomHeight);
-    }
+    setFooterOffsets();
+    stickyFooterlogic();
 
-    if (window.innerWidth <= maxWidth) {
-        $(".sticky-footer").css('display', 'none');
-    }
+    if (window.innerWidth >= maxWidth && maxWidth != 0) {
+        $(mainStickyFooterClass).css('display', 'none');
+    } //avoid error
 
     $(window).scroll(function () {
         //height > footerOffset AND < footerOffset2
-        if (window.innerWidth <= maxWidth) {
+        if (window.innerWidth <= maxWidth || maxWidth == 0) {
             stickyFooterlogic();
         }
     });
 
     function stickyFooterlogic() {
         if (($(window).scrollTop() > footerOffset && $(window).scrollTop() < footerOffset2)) {
-            $(".sticky-footer").slideDown(400);
+            $(mainStickyFooterClass).slideDown(400);
         }
         else if (($(window).scrollTop() < footerOffset || $(window).scrollTop() > footerOffset2)) {
-            $(".sticky-footer").slideUp(400);
+            $(mainStickyFooterClass).slideUp(400);
         }
-        console.log('footerStatus in Scroll function = ' + footerStatus);
     }
 
     $(window).resize(function () { //resize control
-        console.log('resize');
-        if (window.innerWidth > maxWidth) {
-            $(".sticky-footer").css('display', 'none');
+        if (window.innerWidth > maxWidth && maxWidth != 0) {
+            $(mainStickyFooterClass).css('display', 'none');
         } else {
-            if (classHeightMode == true) {
-                footerOffset = getHeight(stickyOffsetClass1, bottomHeight);
-                footerOffset2 = getHeight(stickyOffsetClass2, bottomHeight);
-            }
+            setFooterOffsets();
             stickyFooterlogic();
         }
     });
@@ -67,5 +74,17 @@ $(function () {
             elHeight -= $(window).height();
         }
         return elHeight;
+    }
+
+    function setFooterOffsets(){
+        if (classHeightMode) {
+            footerOffset = getHeight(stickyOffsetClass1, bottomHeight);
+    
+            if(twoOffsetsMode){
+                footerOffset2 = getHeight(stickyOffsetClass2, bottomHeight);
+            } else {
+                footerOffset2 = $(document).height();
+            }
+        }
     }
 })

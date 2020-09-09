@@ -30,7 +30,7 @@ body {
     }
 }
 
-.footer{
+.footer {
     color: white;
     background-color: black;
 }
@@ -41,4 +41,13 @@ body {
     position: fixed;
     bottom: 0;
     z-index: 1;
+    @media only screen and (min-width: 481px) {
+        display: none;
+    }
+}
+
+.sticky-footer-offset-1,
+.sticky-footer-offset-2 {
+    font-size: 20px;
+    background-color: burlywood;
 }

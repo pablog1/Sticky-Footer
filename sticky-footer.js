@@ -17,8 +17,8 @@ $(function () {
     let footerOffset, footerOffset2;
 
     //CONFIG
-    //footerOffset = 800;
-    //footerOffset2 = 2700;
+    //footerOffset = 800; //Uncomment to set a pixel height
+    //footerOffset2 = 2700; //Uncomment to set a pixel height
     let mainStickyFooterClass = '.sticky-footer';
     let stickyOffsetClass1 = '.sticky-footer-offset-1';
     let stickyOffsetClass2 = '.sticky-footer-offset-2';
